@@ -1,0 +1,26 @@
+<%# アイコンのアップロード画面 %>
+<h2><%= l(:label_user_icon_upload) %></h2>
+
+<% form_tag({:controller => 'user_icons', :action => 'upload'}, :multipart => true) do %>
+<div class="tabular box">
+<p>
+  <label><%= l(:field_icon) %></label>
+  <span id="attachments_fields">
+    <%= file_field_tag 'attachments[1][file]', :size => 30, :id => nil, :class => 'file',
+          :onchange => "checkFileSize(this, #{Setting.attachment_max_size.to_i.kilobytes}, '#{escape_javascript(l(:error_attachment_too_big, :max_size => number_to_human_size(Setting.attachment_max_size.to_i.kilobytes)))}');"  -%>
+  </span>
+  <small>
+    (<%= l(:label_max_size) %>: <%= number_to_human_size(Setting.attachment_max_size.to_i.kilobytes) %>)
+  </small>
+  <br />
+  <%= l(:text_user_icon_upload_notice)%>
+</p>
+</div>
+
+<%= hidden_field_tag('user_id', @user.id) %>
+<%= hidden_field_tag('back_url', params[:back_url]) if params[:back_url].present? %>
+<%= submit_tag(l(:button_apply)) %>
+<%= link_to(l(:button_cancel), params[:back_url]) if params[:back_url].present? %>
+<% end # form end %>
+
+<% html_title(l(:label_user_icon_upload)) %>

@@ -1,0 +1,12 @@
+ja:
+  field_icon: アイコン
+  field_user_icon_anonymous: 未設定時に表示するアイコン
+  field_user_list_show_issue_list: チケット一覧でユーザにアイコンを表示する
+
+  label_user_icon_upload: アイコンのアップロード
+
+  text_user_icon_upload: アイコンのアップロード
+  text_user_icon_upload_notice: "アップロードしたアイコンの加工はサポートしていません。<br />大：50x50、中：24x24、小：14x14で縮小・拡大表示されます。<br />画像の縦横比率が異なる場合でも、同じ幅になります。<br />可能であれば、アップロード前に画像を加工しておいてください。"
+  text_user_icon_edit_should_logged: ユーザ登録完了後、個人設定画面より変更できます。
+
+  error_user_icon_content_type_not_images: このファイルは、アイコンに使うことができません。

@@ -1,0 +1,26 @@
+<%# ユーザ編集画面と個人設定画面でのアイコン表示・設定リンク %>
+<p>
+  <% if user.new_record? %><%# 新しいユーザの場合 %>
+    <label><%= l(:field_icon) %></label>
+    <% if User.anonymous.has_icon? %>
+      <%= user_icon(User.anonymous) %><br />
+    <% end %>
+    <%= l(:text_user_icon_edit_should_logged) %>
+  <% else %><%# 登録済みユーザの場合 %>
+    <label><%= l(:field_icon) %>
+      <br />
+      <%# 更新、削除リンク %>
+      <small>
+        <%= link_to(l(:button_change), {:controller => 'user_icons', :action => 'upload', :user_id => user.id, :back_url => url_for(params)}) %>
+        <%= link_to(l(:button_delete), {:controller => 'user_icons', :action => 'destroy', :user_id => user.id, :back_url => url_for(params)},
+                    :confirm => l(:text_are_you_sure), :method => :post) if user.has_icon? %>
+      </small>
+    </label>
+    <%# 現在のアイコン %>
+    <% if user.has_icon? %>
+      <%= user_icon(user) %>
+    <% elsif User.anonymous.has_icon? %>
+      <%= user_icon(User.anonymous) %>
+    <% end %>
+  <% end %>
+</p>

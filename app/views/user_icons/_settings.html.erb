@@ -1,0 +1,19 @@
+<%# プラグインの設定画面 %>
+
+<%# 未設定のユーザに表示するアイコンを設定 %>
+<p>
+  <label><%= l(:field_user_icon_anonymous) %></label>
+  <% if User.anonymous.has_icon? %>
+    <%= user_icon(User.anonymous) %><br />
+  <% end %>
+  <%= link_to(l(:button_change), {:controller => 'user_icons', :action => 'upload', :user_id => User.anonymous.id, :back_url => url_for(params)}) %>
+  <%= link_to(l(:button_delete), {:controller => 'user_icons', :action => 'destroy', :user_id => User.anonymous.id, :back_url => url_for(params)},
+              :confirm => l(:text_are_you_sure), :method => :post) if User.anonymous.has_icon? %>
+</p>
+
+<%# チケット一覧でアイコンを表示 %>
+<p>
+  <label><%= l(:field_user_list_show_issue_list) %></label>
+  <%= hidden_field_tag('settings[show_issue_list_icon]', '0') %>
+  <%= check_box_tag('settings[show_issue_list_icon]', '1', '1' == @settings['show_issue_list_icon']) %>
+</p>
