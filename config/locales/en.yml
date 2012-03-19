@@ -6,7 +6,7 @@ ja:
   label_user_icon_upload: Upload icon
 
   text_user_icon_upload: Upload icon
-  text_user_icon_upload_notice: "Big: 50x50, Midium: 24x24, Small: 14x14
+  text_user_icon_upload_notice: "Big: 50x50, Midium: 24x24, Small: 14x14"
   text_user_icon_edit_should_logged: "Edit after registered."
 
   error_user_icon_content_type_not_images: File is not image.
